@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+
+{% block style %}
+
+#h1{
+font-size:40px;
+text-align:center;
+padding-top:20px;
+}
+#div1{
+bottom-border:solid 1px;
+height:120px;
+background-color:#A3C1AD;
+}
+#col1,#col2{
+margin-left:300px;
+font-size:30px;
+}
+#blink{
+                font-size: 20px;
+                font-weight: bold;
+                color: #2d38be;
+                transition: 0.5s;
+
+}
+
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid " id="div1">
+
+    <h1 id="h1"><b>Hellloo...Welcome to ATM!!!!!!!</b></h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col-3 mt-2 " id="col1"><p>Login here...</p></div>
+        <div class="col mt-3"><a href="login"><button type="button" class="btn btn-secondary" >Login</button></a></div>
+
+    </div>
+    <div class="row mt-5">
+        <marquee width="50px" direction="right" style="color:red;
+padding-left:350px;">If you are a new user then go and register </marquee>
+<!--        <p id="blink">hello</p>-->
+        <div class="col-3 mt-2 " id="col2"><p>Register here...</p></div>
+        <div class="col mt-3"><a href="register"><button type="button" class="btn btn-secondary">register</button></a></div>
+
+
+    </div>
+
+
+</div>
+<button id="bc">button</button>
+        <p id="p6">helloo</p>
+
+
+{% endblock %}

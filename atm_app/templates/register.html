@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% block title%}Registeration{% endblock %}
+{% block style %}
+#h1{
+font-size:40px;
+text-align:center;
+padding-top:25px;
+}
+#div1{
+bottom-border:solid 1px;
+height:120px;
+background-color:#A3C1AD;
+}
+#form_div{
+padding-left:400px;
+}
+{% endblock %}
+
+{% block script %}
+function validate(){
+        alert("hi")
+        var n_pattern=/[0-9]/;
+        var a_pattern=/[A-Za-z-_/\!#$%^&*]/;
+        var e_pattern=/[A-Za-z0-9-_/\!#$%^&*]+@+[A-Za-z]+.+[A-Za-z0-9]/;
+        var p_pattern=/.*[A-Z].*[a-z].*[0-9].*[^A-Za-z0-9]/;
+        var n=document.getElementById("f_name").value;
+<!--        alert(n);-->
+        var p=document.getElementById("password_id").value;
+        var e=document.getElementById("email_id").value;
+        var ph=document.getElementById("phone_id").value;
+        var cp=document.getElementById("c_password_id").value;
+<!--        var g=document.getElementByName("gender").value;-->
+
+
+
+        if(n==""){
+        alert("Name should not be empty!!!");
+        return false;
+        }
+
+        else if(p==""){
+        alert("Password can't be empty!!!");
+        return false;
+        }
+
+        else if(cp==""){
+        alert("Confirm Password can't be empty!!!");
+        return false;
+        }
+        else if(e==""){
+        alert("Email can't be empty!!!");
+        return false;
+        }
+        else if(ph==""){
+        alert("Phone number can't be empty!!!");
+        return false;
+        }
+
+        else if(a_pattern.test(ph)==true){
+        alert("Invalid phone number")
+        return false;
+
+        }
+        else if(len(ph)!=10){
+        alert("Invalid phone number")
+        return false;
+        }
+<!--        else if(p_pattern.test(p)==true){-->
+<!--        alert("Password must contain atleast one Uppercase alphabet,lowecase alphabet,\n digit,spl characters(_/\!#$%^&*)")-->
+<!--        return false;-->
+<!--        }-->
+        else if(e_pattern.test(e)==false){
+        alert("invalid email")
+        return false;
+        }
+        else if(p!=cp){
+        alert("Password and confirm Password doesn't match!!!")
+        }
+        else{
+        alert("Registered Successfully!!!");
+
+        return true;
+        }
+}
+<!--        else if(g==""){-->
+<!--        alert("gender cant be empty!!")-->
+<!--        }-->
+<!--        else{-->
+<!--        alert("Registered successfully!!!")-->
+<!--        alert("Thank You For Creating A bank Account. Your Account Number is")-->
+<!--else{-->
+
+<!--}-->
+<!--        }-->
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="conatiner-fluid" id="div1">
+<h1 id="h1">Registeration....</h1>
+</div>
+
+
+
+    <form action="register" method="POST" onsubmit="return validate()">
+        <div id="form_div">
+<div class="container mt-4 " >
+
+    {% csrf_token %}
+    <div class="row">
+
+            <div class="col-2"> <label for="f_name">First Name :</label></div>
+            <div class="col-3"> <input type="text" id="f_name" name="fname" ><br></div>
+     </div>
+    <div class="row mt-3">
+        <div class="col-2"> <label for="l_name">Last Name :</label></div>
+        <div class="col"> <input type="text" id="l_name" name="lname"><br></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-2"> <label for="email_id">Email :</label></div>
+        <div class="col"> <input type="text" id="email_id" name="email"><br></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-2"> <label for="phone_id">Phone Num :</label></div>
+        <div class="col"> <input type="text" id="phone_id" name="phone"><br></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-2"> <label for="gender">Gender :</label></div>
+        <div class="col"> <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+            </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-2"> <label for="password_id">Password :</label></div>
+        <div class="col"> <input type="password" id="password_id" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])"><br></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-2"> <label for="c_password_id">Confirm Password :</label></div>
+        <div class="col"> <input type="password" id="c_password_id" name="c_password"><br></div>
+    </div>
+
+
+    <div class="row mt-4" >
+        <div class="col-2"></div>
+        <div class="col">
+        <button type="submit" class="btn btn-dark">Register</button>
+
+    </div>
+        </div>
+
+    </div>
+        </div>
+      </form>
+
+
+
+{% endblock %}

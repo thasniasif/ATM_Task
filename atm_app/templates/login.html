@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title%}Registeration{% endblock %}
+{% block style %}
+#h1{
+font-size:40px;
+text-align:center;
+padding-top:25px;
+}
+#div1{
+bottom-border:solid 1px;
+height:120px;
+background-color:#A3C1AD;
+}
+#form_div{
+padding-left:400px;
+}
+{% endblock %}
+{% block body %}
+<div class="conatiner-fluid" id="div1">
+<h1 id="h1">Login....</h1>
+</div>
+<div id="form_div">
+<div class="container mt-5 " >
+    <form method="POST">
+    {% csrf_token %}
+        <div class="row">
+
+            <div class="col-2"> <label for="accn_num">Account number :</label></div>
+            <div class="col-3"> <input type="text" id="accn_num" name="accn_num" ><br></div>
+     </div>
+        <div class="row mt-3">
+
+            <div class="col-2"> <label for="password">Password :</label></div>
+            <div class="col-3"> <input type="text" id="password" name="password" ><br></div>
+     </div>
+        <div class="row mt-4" >
+        <div class="col-2"></div>
+        <div class="col">
+        <button type="submit" class="btn btn-dark">Login</button>
+    </div>
+        </div>
+    </form>
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}
